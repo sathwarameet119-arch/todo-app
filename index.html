@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Todo List</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div style="display:flex;gap:15px;">
+
+  <!-- MAIN TODO APP -->
+  <div class="wrapper">
+
+    <div class="todo-box">
+      <h2>TODO List</h2>
+
+      <input id="taskInput" type="text" placeholder="What would you like to do?">
+
+      <button onclick="addTask()">Add</button>
+      <button onclick="toggleTheme()">🌙</button>
+      <button onclick="clearAllTasks()">🧹</button>
+      <button onclick="showTrash()">🗑</button>
+
+      <div style="margin-top:10px;">
+        <button onclick="setFilter('all')">All</button>
+        <button onclick="setFilter('pending')">Pending</button>
+        <button onclick="setFilter('completed')">Completed</button>
+      </div>
+
+      <p id="counter" style="margin-top:10px;font-size:13px;"></p>
+
+      <div style="background:#ddd;height:8px;border-radius:5px;">
+        <div id="progressBar"
+             style="height:8px;width:0%;background:#38ef7d;border-radius:5px;">
+        </div>
+      </div>
+    </div>
+
+    <div class="list-box">
+      <table>
+        <thead>
+          <tr>
+            <th>Task</th>
+            <th>Status</th>
+            <th>Edit</th>
+            <th>Close</th>
+          </tr>
+        </thead>
+        <tbody id="taskTable"></tbody>
+      </table>
+    </div>
+
+  </div>
+
+  <!-- TRASH PANEL -->
+  <div class="wrapper" id="trashBox" style="display:none;max-width:320px;">
+    <div class="todo-box">
+      <h2>Trash</h2>
+      <button onclick="clearTrash()">Clear Trash</button>
+    </div>
+
+    <div class="list-box">
+      <table>
+        <thead>
+          <tr>
+            <th>Task</th>
+            <th>Restore</th>
+          </tr>
+        </thead>
+        <tbody id="trashTable"></tbody>
+      </table>
+    </div>
+  </div>
+
+</div>
+
+<!-- RIGHT CLICK CONTEXT MENU -->
+<div id="contextMenu" style="
+  position:fixed;
+  display:none;
+  background:white;
+  border-radius:6px;
+  box-shadow:0 5px 15px rgba(0,0,0,0.2);
+  z-index:1000;
+">
+  <div onclick="pinTask()" style="padding:8px 15px;cursor:pointer;">📌 Pin</div>
+  <div onclick="unpinTask()" style="padding:8px 15px;cursor:pointer;">📍 Unpin</div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
